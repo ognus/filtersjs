@@ -1,0 +1,20 @@
+{
+  "name": "filtersjs",
+  "version": "1.0.0",
+  "description": "Simple faceted search solution for small JSON datasets.",
+  "main": "src/index.ts",
+  "repository": "git@github.com:ognus/filtersjs.git",
+  "author": "Tomek Kolasa <kolasa.tomek@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "dev": "parcel src/index.ts",
+    "test": "jest"
+  }
+}
