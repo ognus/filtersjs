@@ -1,6 +1,6 @@
 {
   "name": "filtersjs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simple faceted search solution for small JSON datasets.",
   "main": "src/index.ts",
   "repository": "git@github.com:ognus/filtersjs.git",

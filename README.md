@@ -47,8 +47,9 @@ const items = [
 ];
 
 /**
- * Options object with filters definitions. By default values are converted to lower case strings before match, for custom
- * comparator provide a isMatching(val) function.
+ * Options object with filters definitions.
+ * By default values are converted to lower case strings before match,
+ * for custom comparator provide a isMatching(val) function.
  */
 const options = {
   filters: [

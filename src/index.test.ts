@@ -190,3 +190,66 @@ test("search() should work with AND filters", () => {
     gender: { female: 2 }
   });
 });
+
+test("search() should work with nested properties", () => {
+  const items = [
+    {
+      name: "Scot",
+      gender: "Male",
+      payment: {
+        card: ["jcb", "visa"]
+      }
+    },
+    {
+      name: "Seana",
+      gender: "Female",
+      payment: {
+        card: ["jcb", "visa"]
+      }
+    },
+    {
+      name: "Ken",
+      gender: "Male",
+      payment: {
+        card: ["visa"]
+      }
+    },
+    {
+      name: "Boony",
+      gender: "Male",
+      payment: {
+        card: ["jcb"]
+      }
+    }
+  ];
+
+  const options = {
+    filters: [
+      { key: "payment.card", value: "jcb" },
+      { key: "payment.card", value: "visa" },
+      { key: "gender", value: "male" },
+      { key: "gender", value: "female" }
+    ]
+  };
+
+  const filtersJS = new FiltersJS(items, options);
+
+  const { results, filters } = filtersJS.search({
+    "payment.card": { values: ["jcb", "visa"], operation: Operation.And },
+    gender: ["male"]
+  });
+
+  expect(results).toEqual([
+    {
+      name: "Scot",
+      gender: "Male",
+      payment: {
+        card: ["jcb", "visa"]
+      }
+    }
+  ]);
+
+  expect(filters).toEqual({
+    gender: { female: 2 }
+  });
+});

@@ -13,6 +13,17 @@ function defaultMatchingFunction(value: string | number) {
   );
 }
 
+function deepGet(object = {}, path: string) {
+  const keys = path.split(".");
+  let value = object;
+
+  while (value && keys.length) {
+    value = value[keys.shift()];
+  }
+
+  return value;
+}
+
 class FilterOption implements TTerm {
   private itemKey: string;
   private optionValue: string | number;
@@ -29,7 +40,7 @@ class FilterOption implements TTerm {
   }
 
   private getValues(item = {}) {
-    const value = item[this.itemKey];
+    const value = deepGet(item, this.itemKey);
     return Array.isArray(value) ? value : [value];
   }
 
