@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2019", "dom"]
-  }
+    "target": "es6",
+    "inlineSourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": ["es2019", "dom"],
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"]
 }
