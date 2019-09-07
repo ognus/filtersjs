@@ -21,7 +21,7 @@ export class FiltersJS {
   private getTerms({ values }: Query) {
     return this.index
       .getTerms()
-      .filter(({ key, value }) => !values[key].includes(value));
+      .filter(({ key, value }) => !(values[key] || []).includes(value));
   }
 
   search(params: TQuery) {
@@ -33,8 +33,10 @@ export class FiltersJS {
 
     const filters = this.getTerms(query).reduce((acc, term) => {
       const termResults = finder.find([...terms, term]);
-      acc[term.key] = acc[term.key] || {};
-      acc[term.key][term.value] = termResults.length;
+      if (termResults.length) {
+        acc[term.key] = acc[term.key] || {};
+        acc[term.key][term.value] = termResults.length;
+      }
       return acc;
     }, {});
 

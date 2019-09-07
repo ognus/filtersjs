@@ -90,7 +90,8 @@ test("search() should work with empty values", () => {
     {
       name: "Scot",
       gender: "Male",
-      card: ["visa"]
+      card: ["visa"],
+      profile: "public"
     },
     {
       name: "Seana",
@@ -99,7 +100,8 @@ test("search() should work with empty values", () => {
     },
     {
       name: "Ken",
-      card: ["visa"]
+      card: ["visa"],
+      profile: "private"
     },
     {},
     null,
@@ -111,7 +113,9 @@ test("search() should work with empty values", () => {
       { key: "card", value: "jcb" },
       { key: "card", value: "visa" },
       { key: "gender", value: "male" },
-      { key: "gender", value: "female" }
+      { key: "gender", value: "female" },
+      { key: "profile", value: "private" },
+      { key: "profile", value: "public" }
     ]
   };
 
@@ -126,7 +130,8 @@ test("search() should work with empty values", () => {
     {
       name: "Scot",
       gender: "Male",
-      card: ["visa"]
+      card: ["visa"],
+      profile: "public"
     },
     {
       name: "Seana",
@@ -135,7 +140,11 @@ test("search() should work with empty values", () => {
     }
   ]);
 
-  expect(filters).toEqual({});
+  expect(filters).toEqual({
+    profile: {
+      public: 1
+    }
+  });
 });
 
 test("search() should work with AND filters", () => {
